@@ -652,7 +652,6 @@
                     <!-- Substitua o src pela sua imagem local do dashboard -->
                     <img src="dashboard_sit.png" alt="Dashboard SITTrans">
                 </div>
-
             </div>
         </div>
     </section>
@@ -926,188 +925,126 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>SITrans</h3>
-                    <p>Soluções inteligentes para transporte público urbano, melhorando a mobilidade e qualidade de vida nas cidades.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Links Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Início</a></li>
-                        <li><a href="#about">Sobre o Sistema</a></li>
-                        <li><a href="#fleet">Gestão de Frota</a></li>
-                        <li><a href="#analytics">Análise Gerencial</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Recursos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Documentação</a></li>
-                        <li><a href="#">API para Desenvolvedores</a></li>
-                        <li><a href="#">Aplicativo Móvel</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Newsletter</h3>
-                    <p>Assine para receber atualizações sobre nosso sistema.</p>
-                    <form>
-                        <input type="email" placeholder="Seu email" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: none;">
-                        <button type="submit" class="btn" style="width: 100%; padding: 10px;">Assinar</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 SITrans - Sistemas Inteligentes de Transporte. Todos os direitos reservados.</p>
+                <span>© 2025 SITTrans - Sistema Inteligente de Transporte Coletivo Urbano.</span>
+                <span>Desenvolvido como projeto acadêmico na Fatec São Bernardo do Campo.</span>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
+        // Menu mobile
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('active');
-            });
-        });
-
-        // Smooth scrolling for anchor links
+        // Rolagem suave para os links do menu
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const alvo = document.querySelector(this.getAttribute('href'));
+                if (alvo) {
+                    window.scrollTo({
+                        top: alvo.offsetTop - 60,
+                        behavior: 'smooth'
+                    });
+                    navLinks.classList.remove('active');
+                }
             });
         });
 
-        // Charts
-        // Punctuality Chart
-        const punctualityCtx = document.getElementById('punctualityChart').getContext('2d');
-        const punctualityChart = new Chart(punctualityCtx, {
+        // Gráfico de Ocupação
+        const ctxOcupacao = document.getElementById('chartOcupacao').getContext('2d');
+        const chartOcupacao = new Chart(ctxOcupacao, {
             type: 'bar',
             data: {
-                labels: ['Linha 101', 'Linha 205', 'Linha 310', 'Linha 415', 'Linha 520'],
+                labels: ['101', '205', '310', '520', '709', '666'],
                 datasets: [{
-                    label: 'Pontualidade (%)',
-                    data: [92, 85, 89, 82, 88],
-                    backgroundColor: [
-                        'rgba(46, 125, 50, 0.7)',
-                        'rgba(46, 125, 50, 0.7)',
-                        'rgba(46, 125, 50, 0.7)',
-                        'rgba(46, 125, 50, 0.7)',
-                        'rgba(46, 125, 50, 0.7)'
-                    ],
-                    borderColor: [
-                        'rgba(46, 125, 50, 1)',
-                        'rgba(46, 125, 50, 1)',
-                        'rgba(46, 125, 50, 1)',
-                        'rgba(46, 125, 50, 1)',
-                        'rgba(46, 125, 50, 1)'
-                    ],
-                    borderWidth: 1
+                    label: '% Ocupação Média',
+                    data: [34, 78, 51, 12, 65, 26],
+                    backgroundColor: 'rgba(46, 125, 50, 0.6)'
                 }]
             },
             options: {
-                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
                         max: 100,
-                        title: {
-                            display: true,
-                            text: 'Percentual de Pontualidade'
-                        }
+                        ticks: { stepSize: 20 }
                     }
                 }
             }
         });
 
-        // Demand Chart
-        const demandCtx = document.getElementById('demandChart').getContext('2d');
-        const demandChart = new Chart(demandCtx, {
-            type: 'line',
+        // Gráfico de Status
+        const ctxStatus = document.getElementById('chartStatus').getContext('2d');
+        const chartStatus = new Chart(ctxStatus, {
+            type: 'doughnut',
             data: {
-                labels: ['6h', '8h', '10h', '12h', '14h', '16h', '18h', '20h'],
+                labels: ['Operação', 'Manutenção', 'Inativo'],
                 datasets: [{
-                    label: 'Passageiros por hora',
-                    data: [1200, 4500, 2200, 2800, 2400, 3800, 4200, 1800],
-                    backgroundColor: 'rgba(211, 47, 47, 0.2)',
-                    borderColor: 'rgba(211, 47, 47, 1)',
-                    borderWidth: 2,
-                    tension: 0.3,
-                    fill: true
+                    data: [4, 1, 1],
+                    backgroundColor: [
+                        'rgba(76, 175, 80, 0.8)',
+                        'rgba(255, 152, 0, 0.8)',
+                        'rgba(244, 67, 54, 0.8)'
+                    ]
                 }]
             },
             options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Número de Passageiros'
-                        }
-                    }
-                }
+                plugins: {
+                    legend: { position: 'bottom' }
+                },
+                cutout: '60%'
             }
         });
 
-        // Simulate real-time data updates for fleet
-        function updateVehicleData() {
-            const vehicles = document.querySelectorAll('.vehicle-card:not(.status-inactive):not(.status-maintenance)');
-            vehicles.forEach(vehicle => {
-                const passengerElement = vehicle.querySelector('.vehicle-details p:last-child');
-                if (passengerElement) {
-                    const currentPassengers = parseInt(passengerElement.textContent.split('/')[0].trim());
-                    const maxPassengers = parseInt(passengerElement.textContent.split('/')[1].trim());
-                    const change = Math.floor(Math.random() * 5) - 2; // Random change between -2 and +2
-                    let newPassengers = currentPassengers + change;
-                    newPassengers = Math.max(0, Math.min(maxPassengers, newPassengers)); // Keep within bounds
-                    passengerElement.innerHTML = `<strong>Passageiros:</strong> ${newPassengers}/${maxPassengers}`;
-                }
-                
-                const speedElement = vehicle.querySelector('.vehicle-details p:nth-last-child(2)');
-                if (speedElement) {
-                    const currentSpeed = parseInt(speedElement.textContent.split(' ')[1]);
-                    const change = Math.floor(Math.random() * 10) - 4; // Random change between -4 and +5
-                    let newSpeed = currentSpeed + change;
-                    newSpeed = Math.max(10, Math.min(60, newSpeed)); // Keep within reasonable bounds
-                    speedElement.innerHTML = `<strong>Velocidade:</strong> ${newSpeed} km/h`;
-                }
-            });
-            
-            // Update "last updated" time
-            document.querySelectorAll('.vehicle-details p:nth-last-child(3)').forEach(element => {
-                if (element.textContent.includes('atrás')) {
-                    const currentMinutes = parseInt(element.textContent.split(' ')[1]);
-                    const newMinutes = currentMinutes + 1;
-                    element.textContent = `Última atualização: ${newMinutes} minutos atrás`;
-                }
-            });
-        }
+        // Botão "Atualizar Dados" - simulação simples
+        document.getElementById('btnAtualizar').addEventListener('click', () => {
+            document.querySelectorAll('.vehicle-card').forEach(card => {
+                const velElem = card.querySelector('.velocidade');
+                const passElem = card.querySelector('.passageiros');
 
-        // Update vehicle data every 10 seconds
-        setInterval(updateVehicleData, 10000);
+                const cap = parseInt(card.getAttribute('data-capacidade')) || 70;
+                let vel = parseInt(card.getAttribute('data-velocidade')) || 0;
+                let pass = parseInt(card.getAttribute('data-passageiros')) || 0;
+
+                // pequena variação aleatória só para simular atualização
+                vel = Math.max(0, vel + (Math.round((Math.random() - 0.5) * 10)));
+                pass = Math.min(cap, Math.max(0, pass + Math.round((Math.random() - 0.5) * 5)));
+
+                card.setAttribute('data-velocidade', vel);
+                card.setAttribute('data-passageiros', pass);
+
+                if (velElem) velElem.innerHTML = '<strong>Velocidade:</strong> ' + vel + ' km/h';
+                if (passElem) passElem.innerHTML = '<strong>Passageiros:</strong> ' + pass + '/' + cap;
+            });
+
+            alert('Dados da frota atualizados (simulação).');
+        });
+
+        // Filtro por linha (simples: esconde/mostra cards conforme seleção)
+        document.getElementById('filtroLinha').addEventListener('change', function () {
+            const valor = this.value;
+            const cards = document.querySelectorAll('.vehicle-card');
+
+            cards.forEach(card => {
+                const linha = card.getAttribute('data-linha');
+                if (valor === 'todas') {
+                    card.style.display = 'block';
+                } else if (linha && valor.includes(linha)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
     </script>
 </body>
-
 </html>
-
