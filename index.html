@@ -48,7 +48,7 @@
         header {
             background-color: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: static;      /* NÃO FIXO */
+            position: static;
             width: 100%;
             top: 0;
             z-index: 1000;
@@ -58,7 +58,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;      /* <<< DIMINUIU (era 20px) */
+            padding: 10px 0;
         }
 
         .logo {
@@ -67,7 +67,7 @@
         }
 
         .logo img {
-            height: 32px;          /* <<< MENOR (era 40px) */
+            height: 32px;
             margin-right: 10px;
         }
 
@@ -135,7 +135,6 @@
             align-items: center;
             text-align: center;
             color: white;
-            margin-top: 0;        /* <<< ANTES ERA 80px (tirava um pedaço enorme) */
         }
 
         .hero-content {
@@ -364,45 +363,59 @@
             background-color: white;
         }
 
-        .kpi-cards {
+        .analytics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: 2fr 1.5fr;
+            gap: 30px;
         }
 
-        .kpi-card {
+        .card {
             background: white;
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 20px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            text-align: center;
         }
 
-        .kpi-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 10px 0;
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .kpi {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 15px;
         }
 
         .kpi-label {
-            color: var(--gray);
             font-size: 0.9rem;
+            color: var(--gray);
         }
 
-        .chart-container {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
+        .kpi-value {
+            font-size: 1.4rem;
+            font-weight: 700;
         }
 
-        .chart-title {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
+        .kpi-trend {
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        .trend-up {
+            color: var(--success);
+        }
+
+        .trend-down {
+            color: var(--danger);
         }
 
         /* CONTATO */
@@ -411,150 +424,105 @@
             background-color: #f9f9f9;
         }
 
-        .contact-container {
+        .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: flex-start;
         }
 
-        .contact-info h3 {
+        .contact-form {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-form h3 {
             font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
             color: var(--primary-dark);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .contact-method {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form select {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-info {
+            font-size: 0.95rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .contact-info i {
+            margin-right: 8px;
+            color: var(--primary);
         }
 
         /* FOOTER */
 
         footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 60px 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: #b0bec5;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-links a {
-            color: white;
-            background-color: rgba(255, 255, 255, 0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #b0bec5;
+            background: var(--dark);
+            color: #cfd8dc;
+            padding: 20px 0;
             font-size: 0.9rem;
+        }
+
+        footer .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        footer a {
+            color: #cfd8dc;
+            text-decoration: none;
         }
 
         /* RESPONSIVO */
 
         @media (max-width: 992px) {
-            .about-content,
-            .contact-container {
+            .about-content {
                 grid-template-columns: 1fr;
             }
-
-            .about-image {
-                order: -1;
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 60px; /* antes era 80px, acompanha header menor */
+                top: 60px;
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 60px);
@@ -579,12 +547,6 @@
 
             .hero h1 {
                 font-size: 2.5rem;
-            }
-
-            .btn-group {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
             }
 
             .btn-outline {
@@ -620,7 +582,7 @@
                     <li><a href="#home">Início</a></li>
                     <li><a href="#about">Sobre o Sistema</a></li>
                     <li><a href="#fleet">Gestão de Frota</a></li>
-                    <li><a href="#analytics">Análise Gerencial</a></li>
+                    <li><a href="#analytics">Analytics</a></li>
                     <li><a href="#contact">Contato</a></li>
                 </ul>
                 <div class="mobile-menu">
@@ -642,16 +604,6 @@
         </div>
     </section>
 
-    <!-- (todo o restante do seu HTML permanece IGUAL ao que você mandou) -->
-    <!-- Fleet, Analytics, Contact, Footer, Scripts... -->
-    <!-- Eu não mexi em baixo, só no CSS do topo / hero -->
-
-    <!-- ... cole aqui o restante do seu código exatamente como está no seu arquivo atual ... -->
-
-</body>
-</html>
-
-    
     <!-- Features Section -->
     <section class="section">
         <div class="container">
@@ -697,7 +649,8 @@
                     <a href="#fleet" class="btn">Ver Demonstração</a>
                 </div>
                 <div class="about-image">
-                    <img src="data:image/jpeg;base64,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">
+                    <!-- Substitua o src pela sua imagem local do dashboard -->
+                    <img src="dashboard_sit.png" alt="Dashboard SITTrans">
                 </div>
             </div>
         </div>
@@ -710,15 +663,15 @@
                 <h2>Gestão de Frota em Tempo Real</h2>
                 <p>Monitoramento completo da operação com atualizações a cada 30 segundos</p>
             </div>
-            
+
             <div class="fleet-controls">
                 <div>
-                    <button class="btn">Atualizar Dados</button>
+                    <button class="btn" id="btnAtualizar">Atualizar Dados</button>
                     <button class="btn btn-outline" style="color: var(--primary-dark); border-color: var(--primary-dark);">Exportar Relatório</button>
                 </div>
                 <div>
-                    <select style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
-                        <option>Todas as Linhas</option>
+                    <select id="filtroLinha" style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                        <option value="todas">Todas as Linhas</option>
                         <option>Linha 101 - Centro/Bairro</option>
                         <option>Linha 205 - Zona Norte/Sul</option>
                         <option>Linha 310 - Circular</option>
@@ -728,34 +681,41 @@
                     </select>
                 </div>
             </div>
-            
-            <div class="about-image">
-                    <img src="https://brasilocal.com/images/m/mapa/sao-bernardo-do-campo.png">
-                </div>
+
+            <!-- Mapa -->
+            <div class="map-container">
+                <img src="https://brasilocal.com/images/m/mapa/sao-bernardo-do-campo.png" alt="Mapa São Bernardo do Campo" style="width:100%; height:100%; object-fit: cover;">
             </div>
-        </div>
-    </section>
-            
+
+            <!-- Status da Frota -->
             <h3 style="margin-bottom: 20px; color: var(--primary-dark);">Status da Frota</h3>
             <div class="vehicle-list">
-                <div class="vehicle-card">
+
+                <div class="vehicle-card"
+                     data-linha="101"
+                     data-capacidade="70"
+                     data-passageiros="24"
+                     data-velocidade="42">
                     <div class="vehicle-header">
-                        <span class="vehicle-id">ÔNIBUS 
-                            BOI-4F29</span>
+                        <span class="vehicle-id">ÔNIBUS BOI-4F29</span>
                         <span class="vehicle-status status-active">OPERAÇÃO</span>
                     </div>
                     <div class="vehicle-details">
                         <p><strong>Linha:</strong> 101 - Fatec/Centro/Bairro</p>
                         <p><strong>Motorista:</strong> Emerson Avogado</p>
-                        <p><strong>Última atualização:</strong> 1 minutos atrás</p>
-                        <p><strong>Velocidade:</strong> 42 km/h</p>
-                        <p><strong>Passageiros:</strong> 24/70</p>
+                        <p><strong>Última atualização:</strong> 1 minuto atrás</p>
+                        <p class="velocidade"><strong>Velocidade:</strong> 42 km/h</p>
+                        <p class="passageiros"><strong>Passageiros:</strong> 24/70</p>
                     </div>
-                    </div>
-                <div class="vehicle-card">
+                </div>
+
+                <div class="vehicle-card"
+                     data-linha="205"
+                     data-capacidade="70"
+                     data-passageiros="55"
+                     data-velocidade="0">
                     <div class="vehicle-header">
-                        <span class="vehicle-id">ÔNIBUS 
-                            KLT-7H43</span>
+                        <span class="vehicle-id">ÔNIBUS KLT-7H43</span>
                         <span class="vehicle-status status-maintenance">MANUTENÇÃO</span>
                     </div>
                     <div class="vehicle-details">
@@ -763,80 +723,81 @@
                         <p><strong>Motorista:</strong> -</p>
                         <p><strong>Última atualização:</strong> 1 hora atrás</p>
                         <p><strong>Problema reportado:</strong> Freios</p>
-                        <p><strong>Passageiros:</strong> 55/70</p>
+                        <p class="passageiros"><strong>Passageiros:</strong> 55/70</p>
                     </div>
-                    </div>
-                <div class="vehicle-card">
+                </div>
+
+                <div class="vehicle-card"
+                     data-linha="310"
+                     data-capacidade="70"
+                     data-passageiros="36"
+                     data-velocidade="38">
                     <div class="vehicle-header">
-                        <span class="vehicle-id">ÔNIBUS 
-                            MNP-2D87</span>
+                        <span class="vehicle-id">ÔNIBUS MNP-2D87</span>
                         <span class="vehicle-status status-active">OPERAÇÃO</span>
                     </div>
                     <div class="vehicle-details">
                         <p><strong>Linha:</strong> 310 - Circular</p>
                         <p><strong>Motorista:</strong> Isabelly Oliveira</p>
                         <p><strong>Última atualização:</strong> 1 minuto atrás</p>
-                        <p><strong>Velocidade:</strong> 38 km/h</p>
-                        <p><strong>Passageiros:</strong> 36/70</p>
+                        <p class="velocidade"><strong>Velocidade:</strong> 38 km/h</p>
+                        <p class="passageiros"><strong>Passageiros:</strong> 36/70</p>
                     </div>
-                    </div>     
-                <div class="vehicle-card">
+                </div>
+
+                <div class="vehicle-card"
+                     data-linha="520"
+                     data-capacidade="70"
+                     data-passageiros="0"
+                     data-velocidade="0">
                     <div class="vehicle-header">
-                        <span class="vehicle-id">ÔNIBUS 
-                            QWE-9G12</span>
+                        <span class="vehicle-id">ÔNIBUS QWE-9G12</span>
                         <span class="vehicle-status status-inactive">INATIVO</span>
                     </div>
                     <div class="vehicle-details">
-                        <p><strong>Linha:</strong> 500 - São Bernardo/Diadema</p>
+                        <p><strong>Linha:</strong> 520 - São Bernardo/Diadema</p>
                         <p><strong>Motorista:</strong> Dougla LP3</p>
                         <p><strong>Última atualização:</strong> 15 horas atrás</p>
                         <p><strong>Status:</strong> Aguardando liberação</p>
                     </div>
-                    </div>    
-                <div class="vehicle-card">
+                </div>
+
+                <div class="vehicle-card"
+                     data-linha="709"
+                     data-capacidade="70"
+                     data-passageiros="32"
+                     data-velocidade="52">
                     <div class="vehicle-header">
-                        <span class="vehicle-id">ÔNIBUS 
-                            RAJ-6Y00</span>
+                        <span class="vehicle-id">ÔNIBUS RAJ-6Y00</span>
                         <span class="vehicle-status status-active">OPERAÇÃO</span>
                     </div>
                     <div class="vehicle-details">
-                        <p><strong>Linha:</strong> 520 - São Bernardo/Diadema</p>
+                        <p><strong>Linha:</strong> 709 - Santo André/Diadema</p>
                         <p><strong>Motorista:</strong> Raj Silva</p>
                         <p><strong>Última atualização:</strong> 3 minutos atrás</p>
-                        <p><strong>Velocidade:</strong> 52 km/h</p>
-                        <p><strong>Passageiros:</strong> 32/70</p>
+                        <p class="velocidade"><strong>Velocidade:</strong> 52 km/h</p>
+                        <p class="passageiros"><strong>Passageiros:</strong> 32/70</p>
                     </div>
-                    </div>    
-                <div class="vehicle-card">
+                </div>
+
+                <div class="vehicle-card"
+                     data-linha="666"
+                     data-capacidade="70"
+                     data-passageiros="18"
+                     data-velocidade="28">
                     <div class="vehicle-header">
-                        <span class="vehicle-id">ÔNIBUS 
-                            KAU-8L09</span>
+                        <span class="vehicle-id">ÔNIBUS ZXC-1A23</span>
                         <span class="vehicle-status status-active">OPERAÇÃO</span>
                     </div>
                     <div class="vehicle-details">
-                        <p><strong>Linha:</strong> 708 - Santo André/Diadema</p>
-                        <p><strong>Motorista:</strong> Kaue Astra</p>
-                        <p><strong>Última atualização:</strong> 1 minutos atrás</p>
-                        <p><strong>Velocidade:</strong> 50 km/h</p>
-                        <p><strong>Passageiros:</strong> 40/70</p>
-                    </div>
-                    </div>
-                <div class="vehicle-list">
-                <div class="vehicle-card">
-                    <div class="vehicle-header">
-                        <span class="vehicle-id">ÔNIBUS 
-                            VTR-0T00</span>
-                        <span class="vehicle-status status-active">OPERAÇÃO</span>
-                    </div>
-                    <div class="vehicle-details">
-                        <p><strong>Linha:</strong> 666 - SBC/Centro/Bairro</p>
-                        <p><strong>Motorista:</strong> Mc Love</p>
+                        <p><strong>Linha:</strong> 666 - São Bernardo/Centro</p>
+                        <p><strong>Motorista:</strong> João Pedro</p>
                         <p><strong>Última atualização:</strong> 2 minutos atrás</p>
-                        <p><strong>Velocidade:</strong> 2 km/h</p>
-                        <p><strong>Passageiros:</strong> 0/70</p>
+                        <p class="velocidade"><strong>Velocidade:</strong> 28 km/h</p>
+                        <p class="passageiros"><strong>Passageiros:</strong> 18/70</p>
                     </div>
                 </div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -845,41 +806,59 @@
     <section class="section analytics-section" id="analytics">
         <div class="container">
             <div class="section-title">
-                <h2>Análise Gerencial e KPIs</h2>
-                <p>Métricas e indicadores de desempenho para tomada de decisão estratégica</p>
+                <h2>Analytics Operacional</h2>
+                <p>Indicadores simulados para suporte à tomada de decisão na gestão do transporte coletivo urbano.</p>
             </div>
-            
-            <div class="kpi-cards">
-                <div class="kpi-card">
-                    <i class="fas fa-clock" style="font-size: 1.5rem; color: var(--primary);"></i>
-                    <div class="kpi-value">87%</div>
-                    <div class="kpi-label">Índice de Pontualidade</div>
+
+            <div class="analytics-grid">
+                <div class="card">
+                    <h3>Ocupação Média por Linha</h3>
+                    <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 10px;">
+                        Dados simulados a partir da frota em operação nesta manhã.
+                    </p>
+                    <canvas id="chartOcupacao" height="180"></canvas>
                 </div>
-                <div class="kpi-card">
-                    <i class="fas fa-users" style="font-size: 1.5rem; color: var(--primary);"></i>
-                    <div class="kpi-value">68%</div>
-                    <div class="kpi-label">Lotação Média</div>
+
+                <div>
+                    <div class="card">
+                        <h3>Indicadores Chave</h3>
+                        <div class="kpi-grid">
+                            <div class="kpi">
+                                <div class="kpi-label">Pontualidade Média</div>
+                                <div class="kpi-value">89%</div>
+                                <div class="kpi-trend trend-up">
+                                    <i class="fas fa-arrow-up"></i> +4 p.p. vs. ontem
+                                </div>
+                            </div>
+                            <div class="kpi">
+                                <div class="kpi-label">Lotação Média</div>
+                                <div class="kpi-value">61%</div>
+                                <div class="kpi-trend trend-down">
+                                    <i class="fas fa-arrow-down"></i> -3 p.p. vs. semana passada
+                                </div>
+                            </div>
+                            <div class="kpi">
+                                <div class="kpi-label">Tempo Médio de Espera</div>
+                                <div class="kpi-value">7 min</div>
+                                <div class="kpi-trend trend-up">
+                                    <i class="fas fa-arrow-up"></i> +1 min (trânsito intenso)
+                                </div>
+                            </div>
+                            <div class="kpi">
+                                <div class="kpi-label">Ônibus em Operação</div>
+                                <div class="kpi-value">78%</div>
+                                <div class="kpi-trend trend-up">
+                                    <i class="fas fa-arrow-up"></i> +6 p.p. após manutenção
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 20px;">
+                        <h3>Distribuição por Status</h3>
+                        <canvas id="chartStatus" height="130"></canvas>
+                    </div>
                 </div>
-                <div class="kpi-card">
-                    <i class="fas fa-road" style="font-size: 1.5rem; color: var(--primary);"></i>
-                    <div class="kpi-value">42 min</div>
-                    <div class="kpi-label">Tempo Médio de Viagem</div>
-                </div>
-                <div class="kpi-card">
-                    <i class="fas fa-smile" style="font-size: 1.5rem; color: var(--primary);"></i>
-                    <div class="kpi-value">4.2</div>
-                    <div class="kpi-label">Satisfação do Usuário</div>
-                </div>
-            </div>
-            
-            <div class="chart-container">
-                <h3 class="chart-title">Pontualidade por Linha (últimos 7 dias)</h3>
-                <canvas id="punctualityChart" height="100"></canvas>
-            </div>
-            
-            <div class="chart-container">
-                <h3 class="chart-title">Demanda por Horário (média diária)</h3>
-                <canvas id="demandChart" height="100"></canvas>
             </div>
         </div>
     </section>
@@ -888,76 +867,55 @@
     <section class="section contact-section" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Entre em Contato</h2>
-                <p>Tire suas dúvidas ou envie sugestões para melhorarmos nosso sistema</p>
+                <h2>Contato e Demonstração</h2>
+                <p>Envie uma mensagem para agendar uma apresentação completa do SITTrans aplicada ao seu município.</p>
             </div>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Fale com nossa equipe</h3>
-                    <p>Estamos disponíveis para esclarecer dúvidas, receber feedbacks ou agendar demonstrações do sistema.</p>
-                    
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>contato@sittrans.com.br</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h4>Telefone</h4>
-                            <p>(11) 4002-8922</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Endereço</h4>
-                            <p>Av. Paulista, 1000 - São Paulo/SP</p>
-                        </div>
-                    </div>
-                </div>
-                
+
+            <div class="contact-grid">
                 <div class="contact-form">
+                    <h3>Fale com a equipe do projeto</h3>
                     <form>
                         <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" placeholder="Seu nome completo">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" placeholder="Seu nome completo">
                         </div>
-                        
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="seu@email.com">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" placeholder="seuemail@exemplo.com">
                         </div>
-                        
                         <div class="form-group">
-                            <label for="subject">Assunto</label>
-                            <select id="subject">
-                                <option>Dúvida sobre o sistema</option>
-                                <option>Sugestão de melhoria</option>
-                                <option>Problema técnico</option>
-                                <option>Parcerias comerciais</option>
+                            <label for="org">Órgão / Empresa</label>
+                            <input type="text" id="org" placeholder="Prefeitura, empresa de transporte, etc.">
+                        </div>
+                        <div class="form-group">
+                            <label for="assunto">Assunto</label>
+                            <select id="assunto">
+                                <option value="">Selecione</option>
+                                <option>Demonstração do sistema</option>
+                                <option>Parceria acadêmica</option>
+                                <option>Solicitação de material</option>
                                 <option>Outros</option>
                             </select>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" placeholder="Escreva sua mensagem aqui..."></textarea>
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" placeholder="Descreva sua demanda ou dúvidas"></textarea>
                         </div>
-                        
-                        <button type="submit" class="btn">Enviar Mensagem</button>
+                        <button type="button" class="btn" onclick="alert('Mensagem enviada (simulação). Obrigado pelo contato!')">
+                            Enviar mensagem
+                        </button>
                     </form>
+                </div>
+
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i>Fatec São Bernardo do Campo - Curso de Análise e Desenvolvimento de Sistemas</p>
+                    <p><i class="fas fa-bus"></i>Projeto: Sistema Inteligente para Monitoramento do Transporte Coletivo Urbano</p>
+                    <p><i class="fas fa-user-graduate"></i>Aluno: [Seu Nome Aqui]</p>
+                    <p><i class="fas fa-envelope"></i>Contato acadêmico: seuemail@fatec.sp.gov.br</p>
+                    <p style="margin-top:15px;">
+                        Este site é parte de um Trabalho de Conclusão de Curso (TCC) e utiliza dados fictícios para
+                        simular a operação de um sistema inteligente de gestão de transporte coletivo urbano.
+                    </p>
                 </div>
             </div>
         </div>
@@ -967,213 +925,126 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>SITTrans</h3>
-                    <p>Soluções inteligentes para transporte público urbano, melhorando a mobilidade e qualidade de vida nas cidades.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Links Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Início</a></li>
-                        <li><a href="#about">Sobre o Sistema</a></li>
-                        <li><a href="#fleet">Gestão de Frota</a></li>
-                        <li><a href="#analytics">Análise Gerencial</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Recursos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Documentação</a></li>
-                        <li><a href="#">API para Desenvolvedores</a></li>
-                        <li><a href="#">Aplicativo Móvel</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Newsletter</h3>
-                    <p>Assine para receber atualizações sobre nosso sistema.</p>
-                    <form>
-                        <input type="email" placeholder="Seu email" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: none;">
-                        <button type="submit" class="btn" style="width: 100%; padding: 10px;">Assinar</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 SITTrans - Sistemas Inteligentes de Transporte. Todos os direitos reservados.</p>
+                <span>© 2025 SITTrans - Sistema Inteligente de Transporte Coletivo Urbano.</span>
+                <span>Desenvolvido como projeto acadêmico na Fatec São Bernardo do Campo.</span>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
+        // Menu mobile
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('active');
-            });
-        });
-
-        // Smooth scrolling for anchor links
+        // Rolagem suave para os links do menu
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const alvo = document.querySelector(this.getAttribute('href'));
+                if (alvo) {
+                    window.scrollTo({
+                        top: alvo.offsetTop - 60,
+                        behavior: 'smooth'
+                    });
+                    navLinks.classList.remove('active');
+                }
             });
         });
 
-        // Charts
-        // Punctuality Chart
-        const punctualityCtx = document.getElementById('punctualityChart').getContext('2d');
-        const punctualityChart = new Chart(punctualityCtx, {
+        // Gráfico de Ocupação
+        const ctxOcupacao = document.getElementById('chartOcupacao').getContext('2d');
+        const chartOcupacao = new Chart(ctxOcupacao, {
             type: 'bar',
             data: {
-                labels: ['Linha 101', 'Linha 205', 'Linha 310', 'Linha 415', 'Linha 520'],
+                labels: ['101', '205', '310', '520', '709', '666'],
                 datasets: [{
-                    label: 'Pontualidade (%)',
-                    data: [92, 85, 89, 82, 88],
-                    backgroundColor: [
-                        'rgba(46, 125, 50, 0.7)',
-                        'rgba(46, 125, 50, 0.7)',
-                        'rgba(46, 125, 50, 0.7)',
-                        'rgba(46, 125, 50, 0.7)',
-                        'rgba(46, 125, 50, 0.7)'
-                    ],
-                    borderColor: [
-                        'rgba(46, 125, 50, 1)',
-                        'rgba(46, 125, 50, 1)',
-                        'rgba(46, 125, 50, 1)',
-                        'rgba(46, 125, 50, 1)',
-                        'rgba(46, 125, 50, 1)'
-                    ],
-                    borderWidth: 1
+                    label: '% Ocupação Média',
+                    data: [34, 78, 51, 12, 65, 26],
+                    backgroundColor: 'rgba(46, 125, 50, 0.6)'
                 }]
             },
             options: {
-                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
                         max: 100,
-                        title: {
-                            display: true,
-                            text: 'Percentual de Pontualidade'
-                        }
+                        ticks: { stepSize: 20 }
                     }
                 }
             }
         });
 
-        // Demand Chart
-        const demandCtx = document.getElementById('demandChart').getContext('2d');
-        const demandChart = new Chart(demandCtx, {
-            type: 'line',
+        // Gráfico de Status
+        const ctxStatus = document.getElementById('chartStatus').getContext('2d');
+        const chartStatus = new Chart(ctxStatus, {
+            type: 'doughnut',
             data: {
-                labels: ['6h', '8h', '10h', '12h', '14h', '16h', '18h', '20h'],
+                labels: ['Operação', 'Manutenção', 'Inativo'],
                 datasets: [{
-                    label: 'Passageiros por hora',
-                    data: [1200, 4500, 2200, 2800, 2400, 3800, 4200, 1800],
-                    backgroundColor: 'rgba(211, 47, 47, 0.2)',
-                    borderColor: 'rgba(211, 47, 47, 1)',
-                    borderWidth: 2,
-                    tension: 0.3,
-                    fill: true
+                    data: [4, 1, 1],
+                    backgroundColor: [
+                        'rgba(76, 175, 80, 0.8)',
+                        'rgba(255, 152, 0, 0.8)',
+                        'rgba(244, 67, 54, 0.8)'
+                    ]
                 }]
             },
             options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Número de Passageiros'
-                        }
-                    }
-                }
+                plugins: {
+                    legend: { position: 'bottom' }
+                },
+                cutout: '60%'
             }
         });
 
-        // Simulate real-time data updates for fleet
-        function updateVehicleData() {
-            const vehicles = document.querySelectorAll('.vehicle-card:not(.status-inactive):not(.status-maintenance)');
-            vehicles.forEach(vehicle => {
-                const passengerElement = vehicle.querySelector('.vehicle-details p:last-child');
-                if (passengerElement) {
-                    const currentPassengers = parseInt(passengerElement.textContent.split('/')[0].trim());
-                    const maxPassengers = parseInt(passengerElement.textContent.split('/')[1].trim());
-                    const change = Math.floor(Math.random() * 5) - 2; // Random change between -2 and +2
-                    let newPassengers = currentPassengers + change;
-                    newPassengers = Math.max(0, Math.min(maxPassengers, newPassengers)); // Keep within bounds
-                    passengerElement.innerHTML = `<strong>Passageiros:</strong> ${newPassengers}/${maxPassengers}`;
-                }
-                
-                const speedElement = vehicle.querySelector('.vehicle-details p:nth-last-child(2)');
-                if (speedElement) {
-                    const currentSpeed = parseInt(speedElement.textContent.split(' ')[1]);
-                    const change = Math.floor(Math.random() * 10) - 4; // Random change between -4 and +5
-                    let newSpeed = currentSpeed + change;
-                    newSpeed = Math.max(10, Math.min(60, newSpeed)); // Keep within reasonable bounds
-                    speedElement.innerHTML = `<strong>Velocidade:</strong> ${newSpeed} km/h`;
-                }
-            });
-            
-            // Update "last updated" time
-            document.querySelectorAll('.vehicle-details p:nth-last-child(3)').forEach(element => {
-                if (element.textContent.includes('atrás')) {
-                    const currentMinutes = parseInt(element.textContent.split(' ')[1]);
-                    const newMinutes = currentMinutes + 1;
-                    element.textContent = `Última atualização: ${newMinutes} minutos atrás`;
-                }
-            });
-        }
+        // Botão "Atualizar Dados" - simulação simples
+        document.getElementById('btnAtualizar').addEventListener('click', () => {
+            document.querySelectorAll('.vehicle-card').forEach(card => {
+                const velElem = card.querySelector('.velocidade');
+                const passElem = card.querySelector('.passageiros');
 
-        // Update vehicle data every 10 seconds
-        setInterval(updateVehicleData, 10000);
+                const cap = parseInt(card.getAttribute('data-capacidade')) || 70;
+                let vel = parseInt(card.getAttribute('data-velocidade')) || 0;
+                let pass = parseInt(card.getAttribute('data-passageiros')) || 0;
+
+                // pequena variação aleatória só para simular atualização
+                vel = Math.max(0, vel + (Math.round((Math.random() - 0.5) * 10)));
+                pass = Math.min(cap, Math.max(0, pass + Math.round((Math.random() - 0.5) * 5)));
+
+                card.setAttribute('data-velocidade', vel);
+                card.setAttribute('data-passageiros', pass);
+
+                if (velElem) velElem.innerHTML = '<strong>Velocidade:</strong> ' + vel + ' km/h';
+                if (passElem) passElem.innerHTML = '<strong>Passageiros:</strong> ' + pass + '/' + cap;
+            });
+
+            alert('Dados da frota atualizados (simulação).');
+        });
+
+        // Filtro por linha (simples: esconde/mostra cards conforme seleção)
+        document.getElementById('filtroLinha').addEventListener('change', function () {
+            const valor = this.value;
+            const cards = document.querySelectorAll('.vehicle-card');
+
+            cards.forEach(card => {
+                const linha = card.getAttribute('data-linha');
+                if (valor === 'todas') {
+                    card.style.display = 'block';
+                } else if (linha && valor.includes(linha)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
